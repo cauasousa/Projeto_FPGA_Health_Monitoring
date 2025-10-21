@@ -1,0 +1,29 @@
+###########################################################[
+
+Copyright (C) 1994-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: V-2023.09L-2
+Install: C:\lscc\diamond\3.14\synpbase
+OS: Windows 10 or later
+Hostname: CAUASL
+
+Implementation : impl1
+Synopsys Synopsys Netlist Linker, Version comp202309synp1, Build 349R, Built Sep 17 2024 08:16:26, @
+
+@N|Running in 64-bit mode
+File C:\Users\CauaS\programacao\EmbarTech\residencia_04_2025\modulo_II\Projeto_Final\fpga\Projeto\impl1\synwork\Projeto_impl1_comp.srs changed - recompiling
+@N: NF107 :"c:\users\cauas\programacao\embartech\residencia_04_2025\modulo_ii\projeto_final\fpga\arquivos\projeto_top.sv":4:7:4:9|Selected library: work cell: top view verilog as top level
+@N: NF107 :"c:\users\cauas\programacao\embartech\residencia_04_2025\modulo_ii\projeto_final\fpga\arquivos\projeto_top.sv":4:7:4:9|Selected library: work cell: top view verilog as top level
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 92MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Tue Oct 21 15:04:24 2025
+
+###########################################################]

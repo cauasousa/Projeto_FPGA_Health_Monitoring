@@ -1,0 +1,5 @@
+#List of actual used RTLs.
+
+File                                                                                                                  Type     IN_PROJECT/INCLUDED/LIBRARY
+
+"C:\Users\CauaS\programacao\EmbarTech\residencia_04_2025\modulo_II\Projeto_Final\fpga\Arquivos\projeto_top.sv"     verilog                      IN PROJECT

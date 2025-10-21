@@ -1,0 +1,3 @@
+@W: CL177 :"C:\Users\CauaS\programacao\EmbarTech\residencia_04_2025\modulo_II\Projeto_Final\fpga\Arquivos\projeto_top.sv":29:4:29:9|Sharing sequential element R1ba and merging key_state. Add a syn_preserve attribute to the element to prevent sharing.
+@W: CL177 :"C:\Users\CauaS\programacao\EmbarTech\residencia_04_2025\modulo_II\Projeto_Final\fpga\Arquivos\projeto_top.sv":29:4:29:9|Sharing sequential element R3ba and merging key_state. Add a syn_preserve attribute to the element to prevent sharing.
+

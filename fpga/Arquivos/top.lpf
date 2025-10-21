@@ -1,0 +1,21 @@
+# ============================================================
+# CLOCK
+# ============================================================
+LOCATE    COMP "clk" SITE "P3";
+IOBUF     PORT "clk" IO_TYPE=LVCMOS33;
+FREQUENCY PORT "clk" 25 MHz;
+
+# ============================================================
+# INTERFACE DO TECLADO MATRICIAL
+# ============================================================
+# Entradas (Linhas do teclado) - com pull-up
+LOCATE COMP "R1" SITE "B19"; IOBUF PORT "R1" IO_TYPE=LVCMOS33 PULLMODE=DOWN;  # PT65B (idle baixo)
+LOCATE COMP "R3" SITE "A18"; IOBUF PORT "R3" IO_TYPE=LVCMOS33 PULLMODE=DOWN;  # PT65A (idle baixo)
+
+# Saída (Coluna do teclado)
+LOCATE COMP "C2" SITE "C2"; IOBUF PORT "C2" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=SLOW;  # PL14D
+
+# Saídas de estado (S[1:0])
+LOCATE COMP "S[0]" SITE "B20"; IOBUF PORT "S[0]" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=SLOW;  # PT67B
+LOCATE COMP "S[1]" SITE "E2";  IOBUF PORT "S[1]" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=SLOW;  # PL23D
+
