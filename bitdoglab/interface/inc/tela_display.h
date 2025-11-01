@@ -3,11 +3,13 @@
 #define TELA_DISPLAY_H
 
 #include <stdint.h>
+#include <stdbool.h>
 #include "FreeRTOS.h"
 #include "semphr.h"
 
 // Enum com as telas disponíveis
-typedef enum {
+typedef enum
+{
     TELA_DISPLAY = 0,
     TELA_AX,
     TELA_AY,

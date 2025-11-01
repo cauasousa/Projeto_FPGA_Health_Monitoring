@@ -1,7 +1,0 @@
-C:\lscc\diamond\3.14\synpbase\bin64\syn_nfilter.exe  -link  -multisrs  C:\Users\CauaS\programacao\EmbarTech\residencia_04_2025\modulo_II\Projeto_Final\fpga\Projeto\impl1\synwork\Projeto_impl1_comp.srs  -osyn  C:\Users\CauaS\programacao\EmbarTech\residencia_04_2025\modulo_II\Projeto_Final\fpga\Projeto\impl1\synwork\Projeto_impl1_mult.srs  -log  C:\Users\CauaS\programacao\EmbarTech\residencia_04_2025\modulo_II\Projeto_Final\fpga\Projeto\impl1\synlog\Projeto_impl1_multi_srs_gen.srr 
-relcom:..\..\..\..\..\..\..\..\..\..\..\lscc\diamond\3.14\synpbase\bin64\syn_nfilter.exe -link -multisrs ..\synwork\Projeto_impl1_comp.srs -osyn ..\synwork\Projeto_impl1_mult.srs -log ..\synlog\Projeto_impl1_multi_srs_gen.srr
-rc:0 success:1 runtime:0
-file:..\synwork\projeto_impl1_comp.srs|io:i|time:1761069862|size:3047|exec:0|csum:396C8778649D7672C83B34F0D36A6EA4
-file:..\synwork\projeto_impl1_mult.srs|io:o|time:1761069864|size:2823|exec:0|csum:
-file:..\synlog\projeto_impl1_multi_srs_gen.srr|io:o|time:1761069864|size:1574|exec:0|csum:
-file:..\..\..\..\..\..\..\..\..\..\..\lscc\diamond\3.14\synpbase\bin64\syn_nfilter.exe|io:i|time:1727134362|size:10549248|exec:1|csum:D91EA53737F6BC51A484A15DD0EB29F5

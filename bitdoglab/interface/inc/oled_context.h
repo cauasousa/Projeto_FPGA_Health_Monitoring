@@ -5,13 +5,20 @@
 extern "C" {
 #endif
 
-#include "oled_display.h"   // Define ssd1306_t e funções OLED
-#include "semphr.h"         // Para 
-#include "tela_display.h"
+// Garantir tipos inteiros/booleanos antes de outros includes
+#include <stdint.h>
+#include <stdbool.h>
+
+// === Correção essencial ===
+// FreeRTOS.h deve ser incluído ANTES de semphr.h
+#include "FreeRTOS.h"
+#include "semphr.h"
+
+#include "oled_display.h" // Define ssd1306_t e funções OLED
+#include "tela_display.h" // Define TipoTela
+
+// Variáveis globais (apenas declarações, sem inicialização)
 extern volatile TipoTela tela_atual;
-
-
-// Variável global do display OLED
 extern ssd1306_t oled;
 
 // Mutex para proteger acesso concorrente ao OLED

@@ -27,7 +27,7 @@ set(PICO_BOARD pico_w CACHE STRING "Board type")
 include(pico_sdk_import.cmake)
 
 # Define projeto
-project(InterfaceEntradaBCD C CXX ASM)
+project(Interface C CXX ASM)
 
 #add_compile_definitions(configUSE_CORE_AFFINITY=0)
 
@@ -35,8 +35,8 @@ project(InterfaceEntradaBCD C CXX ASM)
 pico_sdk_init()
 
 # Modify the below lines to enable/disable output over UART/USB
-#pico_enable_stdio_uart(InterfaceEntradaBCD 0)
-#pico_enable_stdio_usb(InterfaceEntradaBCD 1)
+#pico_enable_stdio_uart(Interface 0)
+#pico_enable_stdio_usb(Interface 1)
 
 # Caminho para o FreeRTOS
 set(FREERTOS_KERNEL_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lib/FreeRTOS-Kernel)
@@ -48,12 +48,12 @@ include(${FREERTOS_KERNEL_PATH}/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_i
 add_subdirectory(src)
 
 # Add any user requested libraries
-target_link_libraries(InterfaceEntradaBCD)
+target_link_libraries(Interface)
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(InterfaceEntradaBCD 0)
-pico_enable_stdio_usb(InterfaceEntradaBCD 1)
+pico_enable_stdio_uart(Interface 1)
+pico_enable_stdio_usb(Interface 1)
 
-#pico_add_extra_outputs(InterfaceEntradaBCD)
+#pico_add_extra_outputs(Interface)
 
-#pico_add_extra_outputs(InterfaceEntradaBCD)
+#pico_add_extra_outputs(Interface)

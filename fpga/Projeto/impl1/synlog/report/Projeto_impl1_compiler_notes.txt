@@ -1,7 +1,0 @@
-@N|Running in 64-bit mode
-@N|Running in 64-bit mode
-@N: CG364 :"C:\Users\CauaS\programacao\EmbarTech\residencia_04_2025\modulo_II\Projeto_Final\fpga\Arquivos\projeto_top.sv":4:7:4:9|Synthesizing module top in library work.
-@N|Running in 64-bit mode
-@N: NF107 :"c:\users\cauas\programacao\embartech\residencia_04_2025\modulo_ii\projeto_final\fpga\arquivos\projeto_top.sv":4:7:4:9|Selected library: work cell: top view verilog as top level
-@N: NF107 :"c:\users\cauas\programacao\embartech\residencia_04_2025\modulo_ii\projeto_final\fpga\arquivos\projeto_top.sv":4:7:4:9|Selected library: work cell: top view verilog as top level
-

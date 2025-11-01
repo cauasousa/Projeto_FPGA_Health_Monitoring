@@ -1,3 +1,0 @@
-@E: CG283 :"C:\Users\CauaS\programacao\EmbarTech\residencia_04_2025\modulo_II\Projeto_Final\fpga\Arquivos\projeto_top.sv":47:12:47:17|Procedural assign is not a supported statement
-@E: CS177 :"C:\Users\CauaS\programacao\EmbarTech\residencia_04_2025\modulo_II\Projeto_Final\fpga\Arquivos\projeto_top.sv":48:8:48:10|Expecting net name
-

@@ -1,0 +1,103 @@
+# ============================================================
+# CLOCK
+# ============================================================
+LOCATE    COMP "clk" SITE "P3";
+IOBUF     PORT "clk" IO_TYPE=LVCMOS33;
+FREQUENCY PORT "clk" 25 MHz;
+
+LOCATE COMP "rst_n" SITE "D3";
+IOBUF PORT "rst_n" IO_TYPE=LVCMOS33 PULLMODE=UP;
+
+
+# ============================================================
+# INTERFACE DO TECLADO MATRICIAL 4x4
+# ============================================================
+
+
+# Linhas (Entradas com pull-up - detectam tecla pressionada)
+# ============================================================
+# TECLADO 4x4
+# ============================================================
+
+# Linhas (Entradas com pull-up)
+LOCATE COMP "R1" SITE "B19";
+IOBUF PORT "R1" IO_TYPE=LVCMOS33 PULLMODE=UP;  # PT65B
+LOCATE COMP "R2" SITE "A18";
+IOBUF PORT "R2" IO_TYPE=LVCMOS33 PULLMODE=UP;  # PT65A
+LOCATE COMP "R3" SITE "C2";
+IOBUF PORT "R3" IO_TYPE=LVCMOS33 PULLMODE=UP;  # PT14D
+LOCATE COMP "R4" SITE "B20";
+IOBUF PORT "R4" IO_TYPE=LVCMOS33 PULLMODE=UP;  # PT67B
+
+# Colunas (Saídas — varredura ativa baixa)
+LOCATE COMP "C[0]" SITE "E2";
+IOBUF PORT "C[0]" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=SLOW;  # PT23D
+LOCATE COMP "C[1]" SITE "A19";
+IOBUF PORT "C[1]" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=SLOW;  # PT67A
+LOCATE COMP "C[2]" SITE "B18";
+IOBUF PORT "C[2]" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=SLOW;  # PT62B
+LOCATE COMP "C[3]" SITE "B1";
+IOBUF PORT "C[3]" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=SLOW;  # PT14B
+
+# ============================================================
+# KEY_CODE (saídas do teclado 4-bit)
+# ============================================================
+LOCATE COMP "key_code[0]" SITE "E3"; 
+IOBUF PORT "key_code[0]" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=SLOW;
+
+LOCATE COMP "key_code[1]" SITE "A3"; 
+IOBUF PORT "key_code[1]" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=SLOW;
+
+LOCATE COMP "key_code[2]" SITE "C3"; 
+IOBUF PORT "key_code[2]" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=SLOW;
+
+LOCATE COMP "key_code[3]" SITE "C17"; 
+IOBUF PORT "key_code[3]" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=SLOW;
+
+
+# ============================================================
+# UART - Bitdoglab Interface I
+# ============================================================
+LOCATE COMP "uart_interface_rx" SITE "J4"; 
+IOBUF PORT "uart_interface_rx" IO_TYPE=LVCMOS33;  # PT29A
+
+LOCATE COMP "uart_interface_tx" SITE "J5"; 
+IOBUF PORT "uart_interface_tx" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=SLOW;  # PT29B
+
+# ============================================================
+# UART - Bitdoglab Externa I
+# ============================================================
+LOCATE COMP "uart_ext1_rx" SITE "N17"; 
+IOBUF PORT "uart_ext1_rx" IO_TYPE=LVCMOS33;  # PR35A
+
+LOCATE COMP "uart_ext1_tx" SITE "T17"; 
+IOBUF PORT "uart_ext1_tx" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=SLOW;  # PR47D
+
+# ============================================================
+# UART - Bitdoglab Externa II
+# ============================================================
+LOCATE COMP "uart_ext2_rx" SITE "J4"; 
+IOBUF PORT "uart_ext2_rx" IO_TYPE=LVCMOS33;  # PB29A
+
+LOCATE COMP "uart_ext2_tx" SITE "J5"; 
+IOBUF PORT "uart_ext2_tx" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=SLOW;  # PB29B
+
+# ============================================================
+# LED INDICADOR (um por coluna)
+# ============================================================
+# PL14A -> SITE A2  (led_1)
+LOCATE COMP "led_1" SITE "A2";
+IOBUF PORT "led_1" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=SLOW;  # PL14A (A2)
+
+# PL35A -> SITE K4  (led_2)
+LOCATE COMP "led_2" SITE "K4";
+IOBUF PORT "led_2" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=SLOW;  # PL35A (K4)
+
+# PL5D -> SITE B3   (led_3)
+LOCATE COMP "led_3" SITE "B3";
+IOBUF PORT "led_3" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=SLOW;  # PL5D (B3)
+
+# PL14D -> SITE E19 (led_4)
+LOCATE COMP "led_4" SITE "E19";
+IOBUF PORT "led_4" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=SLOW;  # PL14D (E19)
+
