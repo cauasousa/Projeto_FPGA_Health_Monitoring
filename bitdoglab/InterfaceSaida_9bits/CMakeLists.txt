@@ -27,7 +27,7 @@ set(PICO_BOARD pico_w CACHE STRING "Board type")
 include(pico_sdk_import.cmake)
 
 # Define projeto
-project(Interface C CXX ASM)
+project(InterfaceSaida_9bits C CXX ASM)
 
 #add_compile_definitions(configUSE_CORE_AFFINITY=0)
 
@@ -35,8 +35,10 @@ project(Interface C CXX ASM)
 pico_sdk_init()
 
 # Modify the below lines to enable/disable output over UART/USB
-#pico_enable_stdio_uart(Interface 0)
-#pico_enable_stdio_usb(Interface 1)
+#pico_enable_stdio_uart(InterfaceSaida_9bits 0)
+#pico_enable_stdio_usb(InterfaceSaida_9bits 1)
+
+# Use USB for stdio, disable stdio over UART used for FPGA link
 
 # Caminho para o FreeRTOS
 set(FREERTOS_KERNEL_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lib/FreeRTOS-Kernel)
@@ -48,12 +50,14 @@ include(${FREERTOS_KERNEL_PATH}/portable/ThirdParty/GCC/RP2040/FreeRTOS_Kernel_i
 add_subdirectory(src)
 
 # Add any user requested libraries
-target_link_libraries(Interface)
+target_link_libraries(InterfaceSaida_9bits)
 
+pico_enable_stdio_uart(InterfaceSaida_9bits 1)
+pico_enable_stdio_usb(InterfaceSaida_9bits 1)
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(Interface 1)
-pico_enable_stdio_usb(Interface 1)
+#pico_enable_stdio_uart(InterfaceSaida_9bits 1)
+#pico_enable_stdio_usb(InterfaceSaida_9bits 1)
 
-#pico_add_extra_outputs(Interface)
+#pico_add_extra_outputs(InterfaceSaida_9bits)
 
-#pico_add_extra_outputs(Interface)
+#pico_add_extra_outputs(InterfaceSaida_9bits)

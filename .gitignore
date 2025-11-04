@@ -1,0 +1,9 @@
+# Ignore VS Code workspace settings and local metadata
+.vscode/
+
+# Ignore FreeRTOS-Kernel libraries (local copies)
+bitdoglab/*/lib/FreeRTOS-Kernel/
+
+bitdoglab/*/build
+bitdoglab/*/.vscode
+
