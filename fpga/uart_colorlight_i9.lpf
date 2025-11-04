@@ -1,0 +1,134 @@
+############################################################
+# Colorlight i9 v7.2  (LFE5U-45F-6BG381C)
+# Configuração UART para comunicação FPGA <-> Raspberry Pi Pico
+# 
+# Projeto: Sistema UART bidirecional @ 115200 baud
+# Clock: 25 MHz (interno do Colorlight i9)
+# Autor: Projeto Embarcatech - Etapa 2
+############################################################
+
+# ============================================================
+# CLOCK - 25 MHz (Oscilador interno do Colorlight i9)
+# ============================================================
+# Nota: O módulo UART espera 50 MHz, então use PLL para gerar 50 MHz
+# ou ajuste CLKS_PER_BIT = 217 para 25 MHz @ 115200 baud
+LOCATE COMP "clk_50mhz" SITE "P3";
+IOBUF  PORT "clk_50mhz" IO_TYPE=LVCMOS33;
+FREQUENCY PORT "clk_50mhz" 25.0 MHz;
+
+# ============================================================
+# RESET - Botão de reset (ativo baixo)
+# ============================================================
+# Usar entrada I1 como botão de reset
+LOCATE COMP "reset_n" SITE "D1";
+IOBUF  PORT "reset_n" IO_TYPE=LVCMOS33 PULLMODE=UP;
+
+# ============================================================
+# UART - Comunicação com Raspberry Pi Pico
+# ============================================================
+
+SYSCONFIG CONFIG_IOVOLTAGE=3.3 COMPRESS_CONFIG=ON MCCLK_FREQ=62;
+
+
+# ============================================================
+# UART - Bitdoglab Interface I
+# ============================================================
+# PL29A(RX) -> GPIO16(TX)
+# PL29B(TX) -> GPIO17(RX)
+
+LOCATE COMP "uart_tx_interface" SITE "J5"; 
+IOBUF PORT "uart_tx_interface" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=FAST;  # PL29B
+
+LOCATE COMP "uart_rx_interface" SITE "J4"; 
+IOBUF PORT "uart_rx_interface" IO_TYPE=LVCMOS33 PULLMODE=UP;  # PL29A
+
+# ============================================================
+# UART - Bitdoglab Externa I
+# ============================================================
+# PR35A(RX) -> GPI16(TX)
+# PR47D(TX) -> GPIO17(RX)
+
+LOCATE COMP "uart_tx_externo1" SITE "T17"; 
+IOBUF PORT "uart_tx_externo1" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=FAST;  # PR47D
+
+LOCATE COMP "uart_rx_externo1" SITE "N17"; 
+IOBUF PORT "uart_rx_externo1" IO_TYPE=LVCMOS33 PULLMODE=UP;  # PR35A
+
+# ============================================================
+# UART - Bitdoglab Externa II
+# ============================================================
+
+LOCATE COMP "uart_ext2_tx" SITE "T3"; 
+IOBUF PORT "uart_ext2_tx" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=FAST;  # PB18A
+
+LOCATE COMP "uart_ext2_rx" SITE "T2"; 
+IOBUF PORT "uart_ext2_rx" IO_TYPE=LVCMOS33 PULLMODE=UP;  # PB13A
+
+
+
+# Linhas (Entradas com pull-up - detectam tecla pressionada)
+# ============================================================
+# TECLADO 4x4
+# ============================================================
+
+# R1 R2 R3 R4 C1 C2 C3 C4 
+
+# Linhas (Entradas com pull-up)
+LOCATE COMP "R1" SITE "B19";
+IOBUF PORT "R1" IO_TYPE=LVCMOS33 PULLMODE=UP;  # PT65B
+LOCATE COMP "R2" SITE "A18";
+IOBUF PORT "R2" IO_TYPE=LVCMOS33 PULLMODE=UP;  # PT65A
+LOCATE COMP "R3" SITE "C2";
+IOBUF PORT "R3" IO_TYPE=LVCMOS33 PULLMODE=UP;  # PL14D
+LOCATE COMP "R4" SITE "B20";
+IOBUF PORT "R4" IO_TYPE=LVCMOS33 PULLMODE=UP;  # PT67B
+
+# Colunas (Saídas — varredura ativa baixa)
+LOCATE COMP "C[0]" SITE "E2";
+IOBUF PORT "C[0]" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=FAST;  # PL23D
+LOCATE COMP "C[1]" SITE "A19";
+IOBUF PORT "C[1]" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=FAST;  # PT67A
+LOCATE COMP "C[2]" SITE "B18";
+IOBUF PORT "C[2]" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=FAST;  # PT62B
+LOCATE COMP "C[3]" SITE "B1";
+IOBUF PORT "C[3]" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=FAST;  # PL14B
+
+# debug leds
+# E16
+# D18
+# G5
+# F5
+
+# E17
+# D17
+# D16
+# E6
+
+# ============================================================
+# LED INDICADOR (um por coluna)
+# ============================================================
+# Menos significativo pro mais....
+LOCATE COMP "led_1" SITE "E16";
+IOBUF PORT "led_1" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=FAST; 
+
+LOCATE COMP "led_2" SITE "D18";
+IOBUF PORT "led_2" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=FAST; 
+
+LOCATE COMP "led_3" SITE "G5";
+IOBUF PORT "led_3" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=FAST;  
+
+LOCATE COMP "led_4" SITE "F5";
+IOBUF PORT "led_4" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=FAST;  
+
+# ================= 4 primeiro
+LOCATE COMP "led_5" SITE "E17";
+IOBUF PORT "led_5" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=FAST; 
+
+LOCATE COMP "led_6" SITE "D17";
+IOBUF PORT "led_6" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=FAST; 
+
+LOCATE COMP "led_7" SITE "D16";
+IOBUF PORT "led_7" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=FAST;  
+
+LOCATE COMP "led_8" SITE "E6";
+IOBUF PORT "led_8" IO_TYPE=LVCMOS33 DRIVE=8 SLEWRATE=FAST;  
