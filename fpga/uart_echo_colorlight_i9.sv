@@ -1,9 +1,7 @@
 // ======================================================================
 // Módulo: uart_echo_colorlight_i9
 // Descrição: Sistema que integra comunicação UART, teclado matricial,
-//             LEDs e uma FSM de menu. Responsável por gerenciar troca
 //             de dados entre uma interface UART interna e uma externa,
-//             além de exibir informações via LEDs.
 // ======================================================================
 module uart_echo_colorlight_i9 #(
     parameter CLK_FREQ_HZ = 25_000_000,  // Clock do sistema (25 MHz)
@@ -19,14 +17,6 @@ module uart_echo_colorlight_i9 #(
 
     input  wire       R1, R2, R3, R4,        // Linhas do teclado
     output reg  [3:0] C,                     // Colunas do teclado
-    output logic led_1, 
-    output logic led_2,
-    output logic led_3,
-    output logic led_4,
-    output logic led_5,
-    output logic led_6,
-    output logic led_7,
-    output logic led_8
 );
 
     // ----------------- Delay de inicialização -----------------
@@ -296,7 +286,6 @@ module uart_echo_colorlight_i9 #(
     reg [1:0] rx_fsm_state = 2'd0;
     reg [7:0] external_byte1 = 8'h00;
     reg [7:0] external_byte2 = 8'h00;
-    reg [7:0] leds_reg;
 
     always_ff @(posedge clk_25mhz or negedge reset_n_internal) begin
         if (!reset_n_internal) begin
@@ -308,7 +297,6 @@ module uart_echo_colorlight_i9 #(
             rx_wait_counter    <= 32'd0;
             external_single_byte <= 1'b0;
             measurement_byte   <= 8'h00;
-            leds_reg           <= 8'h00;
             forward_buffer_valid <= 1'b0; 
         end else begin
             case (rx_fsm_state)
@@ -342,7 +330,6 @@ module uart_echo_colorlight_i9 #(
                         external_byte2 <= 8'h00;
                         measurement_byte <= external_byte1; 
                         ext_packet_ready <= 1'b1;
-                        leds_reg <= external_byte1;
                         rx_fsm_state <= 2'd2;
                     end
                 end
@@ -358,18 +345,7 @@ module uart_echo_colorlight_i9 #(
         end
     end
 
-    // ----------------- Mapeamento dos LEDs -----------------
-    // Cada bit do registrador leds_reg controla um LED físico.
-    always_comb begin
-        led_1 = leds_reg[0];
-        led_2 = leds_reg[1];
-        led_3 = leds_reg[2];
-        led_4 = leds_reg[3];
-        led_5 = leds_reg[4];
-        led_6 = leds_reg[5];
-        led_7 = leds_reg[6];
-        led_8 = leds_reg[7];
-    end
+    
 
     // --- Fim do Arquivo ---
 endmodule
