@@ -1,3 +1,39 @@
+/*
+
+Módulo: teclado
+Descrição geral:
+Este módulo realiza a varredura (scanning) de um teclado matricial 4x4.
+Ele alterna as colunas ativas de forma cíclica, controlando o sinal das
+linhas (C) para detectar qual tecla está sendo pressionada.
+
+Parâmetros:
+- CLK_FREQ: frequência do clock de entrada em Hz (padrão: 25 MHz).
+- SCAN_FREQ: frequência de varredura desejada (padrão: 1000 Hz).
+
+Entradas:
+- clk: sinal de clock do sistema.
+- rst_n: reset ativo em nível baixo.
+
+Saídas:
+- C: vetor de 4 bits que indica qual coluna está ativa no momento.
+- col_index: índice da coluna ativa (0 a 3).
+
+Funcionamento resumido:
+O módulo utiliza um contador (scan_counter) que controla a taxa de varredura.
+A cada período correspondente ao SCAN_CYCLES, o índice de coluna (col_index)
+é incrementado, alternando a coluna ativa.
+O sinal "C" define qual coluna do teclado está sendo varrida,
+enquanto as linhas do teclado podem ser lidas externamente para identificar
+as teclas pressionadas.
+
+Observação:
+Este módulo não realiza a leitura direta das teclas — apenas gera o padrão
+de varredura necessário para o circuito externo detectar as teclas ativas.
+
+---
+
+*/
+
 `timescale 1ns/1ps
 `default_nettype none
 

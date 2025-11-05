@@ -3,7 +3,7 @@
 // Integração completa para comunicação FPGA <-> Raspberry Pi Pico
 //
 // Este módulo integra transmissor e receptor UART para comunicação bidirecional
-// Configuração: 115200 baud, 8N1, 50 MHz clock
+// Configuração: 115200 baud, 8N1, 25 MHz clock
 //
 // Conexões com Raspberry Pi Pico:
 //   FPGA TX -> Pico RX (GP1 ou outro pino UART)
@@ -11,11 +11,11 @@
 //   GND     -> GND (compartilhado)
 
 module uart_top #(
-    parameter CLK_FREQ_HZ = 25_000_000,  // Clock do sistema (50 MHz)
+    parameter CLK_FREQ_HZ = 25_000_000,  // Clock do sistema 
     parameter BAUD_RATE   = 9600        // Taxa de transmissão
 ) (
     // Sinais do sistema
-    input  logic       i_clk,          // Clock 50 MHz
+    input  logic       i_clk,          // Clock 
     input  logic       i_rst_n,        // Reset assíncrono ativo baixo
     
     // Interface UART física (conectar ao Raspberry Pi Pico)
